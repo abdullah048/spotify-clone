@@ -8,10 +8,20 @@ export default function Home() {
         <div className='mb-2'>
           <h1 className='text-white text-3xl font-semibold'>Welcome back</h1>
           <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-3 mt-4'>
-            <ListItem href='' name='' image='/images/liked.png' />
+            <ListItem
+              href='liked'
+              name='Liked Songs'
+              image='/images/liked.png'
+            />
           </div>
         </div>
       </Header>
+      <div className='mt-2 mb-7 px-6'>
+        <div className='flex justify-between items-center'>
+          <h1 className='text-white text-2xl font-semibold'>Newest songs</h1>
+        </div>
+        <div className=''>List of songs</div>
+      </div>
     </main>
   );
 }
