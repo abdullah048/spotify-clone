@@ -24,7 +24,7 @@ const Modal = ({ isOpen, onChange, title, description, children }: Props) => {
           max-h-full 
           h-full 
           md:h-auto 
-          md:max-h-[85vh]
+          md:max-h-[89vh]
           w-full md:w-[90vw]
           md:max-w-[450px] 
           translate-x-[-50%]
