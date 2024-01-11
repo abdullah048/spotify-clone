@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 type Props = {};
 
 const ModalProvider = (props: Props) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false); // To avoid getting hydration error on load
 
   useEffect(() => {
     setIsMounted(true);
