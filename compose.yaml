@@ -10,6 +10,9 @@ services:
       NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNmZ2FzamFmb2hpYnZzcGV1eW12Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcwMzQxODI0MiwiZXhwIjoyMDE4OTk0MjQyfQ.J7HFFAkvmDVGV89ELXewVI4nLbYAIyngd7JA4IZgwMU
     ports:
       - 3000:3000
+    volumes:
+      - .:/app
+      - /app/node_modules
     develop:
       watch:
         - path: ./package.json
@@ -21,5 +24,3 @@ services:
         - path: .
           target: /app
           action: sync
-volumes:
-  spotify:
