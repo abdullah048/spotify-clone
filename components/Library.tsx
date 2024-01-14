@@ -54,7 +54,7 @@ const Library = ({ songs }: Props) => {
           className='text-neutral-400 cursor-pointer hover:text-white transition-all'
         />
       </div>
-      <div className='flex flex-col gap-y-2 mt-4 px-5'>{renderSongList()}</div>
+      <div className='flex flex-col gap-y-2 mt-4 px-2'>{renderSongList()}</div>
     </div>
   );
 };

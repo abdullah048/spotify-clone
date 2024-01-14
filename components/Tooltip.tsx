@@ -1,4 +1,7 @@
+'use client';
+
 import React, { ReactNode } from 'react';
+import * as RadixUITooltip from '@radix-ui/react-tooltip';
 
 type Props = {
   message: string;
@@ -7,14 +10,21 @@ type Props = {
 
 const Tooltip = ({ message, children }: Props) => {
   return (
-    <>
-      <div className='group/tooltip relative flex'>
-        {children}
-        <span className='absolute opacity-0 top-6 scale-0 transition-all rounded-md bg-gray-800 p-2 text-xs text-white group-hover/tooltip:opacity-100 group-hover/tooltip:scale-100'>
-          {message}
-        </span>
-      </div>
-    </>
+    <RadixUITooltip.Provider>
+      <RadixUITooltip.Root>
+        <RadixUITooltip.Trigger asChild>{children}</RadixUITooltip.Trigger>
+        <RadixUITooltip.Portal>
+          {message.length < 30 ? null : (
+            <RadixUITooltip.Content
+              className='rounded-md px-2 py-3 text-neutral-900 bg-white drop-shadow-md select-none transition-all'
+              sideOffset={5}>
+              {message}
+              <RadixUITooltip.Arrow className='fill-white' />
+            </RadixUITooltip.Content>
+          )}
+        </RadixUITooltip.Portal>
+      </RadixUITooltip.Root>
+    </RadixUITooltip.Provider>
   );
 };
 

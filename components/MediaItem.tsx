@@ -4,7 +4,8 @@ import { fallBackImagePath } from '@/constants/data';
 import useLoadImage from '@/hooks/useLoadImage';
 import { Song } from '@/typings';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import Tooltip from './Tooltip';
 
 type Props = {
   onClick?: (id: string) => void;
@@ -48,8 +49,11 @@ const MediaItem = ({ onClick, song }: Props) => {
           alt={song.title}
         />
       </div>
+
       <div className='flex flex-col gap-y-1 overflow-hidden'>
-        <p className='text-white truncate'>{song.title}</p>
+        <Tooltip message={song.title}>
+          <p className='text-white truncate'>{song.title}</p>
+        </Tooltip>
         <p className='text-neutral-400 text-sm truncate'>{song.author}</p>
       </div>
     </div>

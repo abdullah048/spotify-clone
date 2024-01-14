@@ -1,11 +1,12 @@
 'use client';
 
 import PlayButton from '@/components/PlayButton';
+import Tooltip from '@/components/Tooltip';
 import { fallBackImagePath } from '@/constants/data';
 import useLoadImage from '@/hooks/useLoadImage';
 import { Song } from '@/typings';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   song: Song;
@@ -41,12 +42,16 @@ const SongItem = ({ song, onClick }: Props) => {
           alt='cover-image'
         />
       </div>
+
       <div className='flex flex-col items-start w-full pt-4 gap-y-1'>
-        <p className='font-semibold truncate w-full'>{song.title}</p>
+        <Tooltip message={song.title}>
+          <p className='font-semibold truncate w-full'>{song.title}</p>
+        </Tooltip>
         <p className='capitalize text-neutral-400 text-sm w-full truncate'>
           By {song.author}
         </p>
       </div>
+
       <div className='absolute bottom-24 right-5'>
         <PlayButton />
       </div>
