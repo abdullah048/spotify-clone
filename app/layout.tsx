@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { Figtree } from 'next/font/google';
-import './globals.css';
+import '@/app/globals.css';
 import Sidebar from '@/components/Sidebar';
 import SupabaseProviders from '@/providers/SupabaseProviders';
 import UserProvider from '@/providers/UserProvider';
 import ModalProvider from '@/providers/ModalProvider';
 import ToasterProvider from '@/providers/ToasterProvider';
+import getSongByUserID from '@/actions/getSongByUserID';
 
 const font = Figtree({ subsets: ['latin'] });
 
@@ -14,11 +15,15 @@ export const metadata: Metadata = {
   description: 'Listen to music',
 };
 
-export default function RootLayout({
+export const revalidate = 0;
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const userSongs = await getSongByUserID();
+
   return (
     <html lang='en'>
       <body className={font.className}>
@@ -26,7 +31,7 @@ export default function RootLayout({
         <SupabaseProviders>
           <UserProvider>
             <ModalProvider />
-            <Sidebar>{children}</Sidebar>
+            <Sidebar songs={userSongs}>{children}</Sidebar>
           </UserProvider>
         </SupabaseProviders>
       </body>
