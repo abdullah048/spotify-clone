@@ -28,7 +28,6 @@ export default async function RootLayout({
     <html lang='en'>
       <body className={font.className}>
         <ToasterProvider />
-
         <SupabaseProviders>
           <UserProvider>
             <ModalProvider />

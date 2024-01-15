@@ -25,7 +25,7 @@ const AuthModal = () => {
 
   useEffect(() => {
     if (session) {
-      router.replace('/');
+      router.refresh();
       onClose();
     }
   }, [onClose, router, session]);
