@@ -17,7 +17,8 @@ const Modal = ({ isOpen, onChange, title, description, children }: Props) => {
       <Dialog.Portal>
         <Dialog.Overlay className='bg-neutral-900/90 backdrop-blur-sm fixed inset-0' />
         <Dialog.Content
-          className='fixed 
+          className='fixed
+          overflow-y-auto
           drop-shadow-md
           border border-neutral-700
           top-[50%] left-[50%] 
@@ -31,7 +32,8 @@ const Modal = ({ isOpen, onChange, title, description, children }: Props) => {
           translate-y-[-50%]
           rounded-md
         bg-neutral-800
-          p-[25px]
+          px-[25px]
+          pt-[25px]
           focus:outline-none'>
           <Dialog.Title
             className='

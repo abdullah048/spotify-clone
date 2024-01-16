@@ -69,6 +69,7 @@ export const UserContextProvider = (props: Props) => {
       setUserDetails(null);
       setSubscription(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isLoadingUser]);
 
   const value = {
