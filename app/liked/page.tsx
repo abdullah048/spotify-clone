@@ -33,7 +33,7 @@ const LikedPage = async () => {
         </div>
       </Header>
       <div className='px-6'>
-        <LikedContent />
+        <LikedContent songs={likedSongs} />
       </div>
     </div>
   );
