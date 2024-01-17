@@ -3,13 +3,18 @@
 import { Song } from '@/typings';
 import React from 'react';
 import SongItem from './SongItem';
+import useOnPlay from '@/hooks/useOnPlay';
 
 type Props = {
   songs: Song[];
 };
 
 const PageContent = ({ songs }: Props) => {
-  const handleClick = (id: string) => {};
+  const onPlay = useOnPlay(songs);
+
+  const handleClick = (id: string) => {
+    onPlay(id);
+  };
 
   if (songs.length === 0) {
     return <div className='mt-4 text-neutral-400'>No songs available.</div>;
