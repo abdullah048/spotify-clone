@@ -2,6 +2,7 @@
 
 import LikedButton from '@/components/LikedButton';
 import MediaItem from '@/components/MediaItem';
+import useOnPlay from '@/hooks/useOnPlay';
 import { Song } from '@/typings';
 import React from 'react';
 
@@ -10,11 +11,14 @@ type Props = {
 };
 
 const SearchContent = ({ songs }: Props) => {
+  const onPlay = useOnPlay(songs);
   if (songs.length === 0) {
     return <div className='mt-4 text-neutral-400'>No songs found.</div>;
   }
 
-  const handleOnClick = (id: string) => {};
+  const handleOnClick = (id: string) => {
+    onPlay(id);
+  };
 
   return (
     <div className='flex flex-col gap-y-2 w-full'>

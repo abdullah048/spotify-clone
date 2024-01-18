@@ -1,6 +1,7 @@
 'use client';
 import LikedButton from '@/components/LikedButton';
 import MediaItem from '@/components/MediaItem';
+import useOnPlay from '@/hooks/useOnPlay';
 import { useUser } from '@/hooks/useUser';
 import { Song } from '@/typings';
 import { useRouter } from 'next/navigation';
@@ -11,6 +12,7 @@ type Props = {
 };
 
 const LikedContent = ({ songs }: Props) => {
+  const onPlay = useOnPlay(songs);
   const router = useRouter();
   const { user, isLoading } = useUser();
 
@@ -20,7 +22,9 @@ const LikedContent = ({ songs }: Props) => {
     }
   }, [user, isLoading, router]);
 
-  const handleOnClick = (id: string) => {};
+  const handleOnClick = (id: string) => {
+    onPlay(id);
+  };
 
   if (songs.length === 0) {
     return <div className='mt-4 text-neutral-400'>No songs found.</div>;
