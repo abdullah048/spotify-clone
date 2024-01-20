@@ -23,7 +23,7 @@ interface Product {
   id: string;
   active?: boolean;
   name?: string;
-  description?: string;
+  description: string | null;
   image?: string;
   metadata?: Stripe.Metadata;
 }
@@ -32,8 +32,8 @@ interface Price {
   id: string;
   product_id?: string;
   active?: boolean;
-  description?: string;
-  unit_amount?: number;
+  description?: string | null;
+  unit_amount?: number | null;
   currency?: string;
   type?: Stripe.Price.Type;
   interval?: Stripe.Price.Recurring.Interval;
@@ -61,3 +61,9 @@ interface Subscription {
   trial_end?: string;
   prices?: Price;
 }
+
+type StripeCustomer = { metadata: { supabaseUUID: string }; email?: string };
+
+type ProductWithPrice = Product & {
+  prices?: Price[];
+};

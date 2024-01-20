@@ -7,6 +7,7 @@ import useUploadModalStore from '@/hooks/useUploadModalStore';
 import { Song } from '@/typings';
 import MediaItem from './MediaItem';
 import useOnPlay from '@/hooks/useOnPlay';
+import useSubscriptionModal from '@/hooks/useSubscriptionModalStore';
 
 type Props = {
   songs: Song[];
@@ -14,8 +15,9 @@ type Props = {
 
 const Library = ({ songs }: Props) => {
   const authModal = useAuthModalStore();
+  const subscriptionModal = useSubscriptionModal();
   const uploadModal = useUploadModalStore();
-  const { user } = useUser();
+  const { user, subscription } = useUser();
   const onPlay = useOnPlay(songs);
 
   const handleMediaClick = (id: string) => {
@@ -27,7 +29,9 @@ const Library = ({ songs }: Props) => {
       return authModal.onOpen('sign_in');
     }
 
-    // TODO: Check for subscriptions
+    if (!subscription) {
+      return subscriptionModal.onOpen();
+    }
 
     return uploadModal.onOpen();
   };

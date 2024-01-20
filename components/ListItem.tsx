@@ -1,7 +1,9 @@
 'use client';
+import { useUser } from '@/hooks/useUser';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { FC } from 'react';
+import toast from 'react-hot-toast';
 import { FaPlay } from 'react-icons/fa';
 interface ListItemProps {
   image: string;
@@ -11,8 +13,11 @@ interface ListItemProps {
 
 const ListItem: FC<ListItemProps> = ({ name, image, href }) => {
   const router = useRouter();
+  const { user, isLoading } = useUser();
   const handleClick = () => {
-    // TODO: Add authentication before pushing
+    if (!isLoading && !user) {
+      return toast('Must be logged in first.');
+    }
     router.push(href);
   };
   return (

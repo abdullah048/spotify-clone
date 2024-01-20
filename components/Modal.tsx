@@ -24,10 +24,10 @@ const Modal = ({ isOpen, onChange, title, description, children }: Props) => {
           top-[50%] left-[50%] 
           max-h-full 
           h-full 
-          md:h-auto 
-          md:max-h-[89vh]
-          w-full md:w-[90vw]
-          md:max-w-[450px] 
+          xs:h-auto 
+          xs:max-h-[89vh]
+          w-full xs:w-[90vw]
+          xs:max-w-[450px] 
           translate-x-[-50%]
           translate-y-[-50%]
           rounded-md

@@ -6,6 +6,7 @@ import { Song } from '@/typings';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Tooltip from './Tooltip';
+import usePlayer from '@/hooks/usePlayerStore';
 
 type Props = {
   onClick?: (id: string) => void;
@@ -15,13 +16,14 @@ type Props = {
 const MediaItem = ({ onClick, song }: Props) => {
   const [imageSrc, setImageSrc] = useState<string>(fallBackImagePath);
   const publicUrl = useLoadImage(song);
+  const player = usePlayer();
 
   const handleClick = () => {
     if (onClick) {
       return onClick(song.id);
     }
 
-    // TODO: Default turn on player...
+    return player.setId(song.id);
   };
 
   useEffect(() => {

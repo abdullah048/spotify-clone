@@ -1,12 +1,16 @@
 'use client';
 
 import AuthModal from '@/components/AuthModal';
+import SubscriptionModal from '@/components/SubscriptionModal';
 import UploadModal from '@/components/UploadModal';
+import { ProductWithPrice } from '@/typings';
 import { useEffect, useState } from 'react';
 
-type Props = {};
+type Props = {
+  products: ProductWithPrice[];
+};
 
-const ModalProvider = (props: Props) => {
+const ModalProvider = ({ products }: Props) => {
   const [isMounted, setIsMounted] = useState(false); // To avoid getting hydration error on load
 
   useEffect(() => {
@@ -21,6 +25,7 @@ const ModalProvider = (props: Props) => {
     <>
       <AuthModal />
       <UploadModal />
+      <SubscriptionModal products={products} />
     </>
   );
 };
